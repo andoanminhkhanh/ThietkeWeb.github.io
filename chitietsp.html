@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add this to your head -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link href="../Trangchinh/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font1|Font2|Font3&display=swap">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css'>
+    <link href="../Trangchinh/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="chitietsp\Logo (1).png" >
+
+    <title>Chi tiết sản phẩm</title>
+    <style>
+        @import url(TKW.css);
+        @import url(bootstrap.css);
+        /* Điều chỉnh cho máy tính bảng */
+            @media screen and (max-width: 1024px) {
+            footer {
+            padding: 15px 0;
+            font-size: 14px;
+            }
+        }
+
+        /* Điều chỉnh cho điện thoại di động */
+        @media screen and (max-width: 768px) {
+            footer {
+            padding: 10px 0;
+            font-size: 12px;
+            }
+        }
+    </style>
+    <style>
+        /* Đặt lại margin và padding mặc định */
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            color: white;
+            background: url(anh2.png);
+            background-size: cover;
+            text-align: center;
+            height: 13em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        header h1 {
+            margin: 0;
+            padding-top: 0.2em;
+            font-family: Georgia, serif; /* Phông chữ mặc định */
+            font-style: italic;          /* Kiểu chữ mặc định */
+            font-size: 1.5em;            /* Kích thước chữ mặc định */
+        }
+
+        header p {
+            margin: 0;
+            padding-top: 1.7em;
+            font-family: Georgia, serif; /* Phông chữ mặc định */
+            font-style: italic;          /* Kiểu chữ mặc định */
+            font-size: 1em;              /* Kích thước chữ mặc định */
+        }
+
+        nav, footer {
+            font-family: verdana, sans-serif;
+            background-color: #8ABDE8;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            font-size: .8em;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            position: relative;
+        }
+
+        nav ul li a {
+            display: block;
+            border: none;
+            padding: .5em 1em;
+            border-radius: .5em;
+            margin: .25em;
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #8ABDE8;
+            border: 1px solid #ccc;
+            padding: 10px;
+            list-style-type: none;
+            z-index: 1;
+            width: 200px; /* Tăng độ rộng của ô thả xuống */
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            text-transform: none;
+            letter-spacing: normal;
+            font-size: 0.7em;
+            font-family: verdana, sans-serif;
+        }
+
+        nav ul li ul li a {
+            color: #000;
+            text-decoration: none;
+            padding: .2em .5em;
+            border: none;
+            border-radius: 0;
+            display: block;
+            font-family: verdana, sans-serif;
+            font-size: 1.5em;
+        }
+
+        nav ul li ul li a:hover {
+            background-color: #8ABDE8;
+            color: #fff;
+        }
+
+        @media screen and (max-width: 767px) {
+            .navbar-toggler {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li:hover ul {
+                display: none;
+            }
+
+            nav ul li ul.show {
+                display: block;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .navbar-toggler {
+                display: none;
+            }
+
+            nav ul {
+                display: flex;
+            }
+
+            nav ul li ul.show {
+                display: none;
+            }
+        }
+
+        @media screen and (min-width: 600px) {
+            header p {
+                display: block;
+                margin-top: -1.5em;
+                font-size: 1.2em;
+            }
+        }
+
+        @media screen and (min-width: 940px) {
+            header h1 {
+                display: block;
+                margin-top: -0.2em;
+                font-size: 3em;
+            } 
+        }
+
+        /* Existing CSS */
+        /* Additional CSS for search and cart */
+        .search-cart-container {
+            position: fixed;
+            top: 15px;
+            right: 15px; /* Di chuyển một chút sang trái */
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 1000; /* Đảm bảo nó ở trên các phần tử khác */
+        }
+
+        .search-container, .cart-container {
+            position: relative;
+        }
+
+        .search-container a, .cart-container a {
+            color: #13538A; /* Đặt màu cho biểu tượng */
+        }
+
+        .search-container input {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            z-index: 2;
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc; /* Thêm viền để dễ nhìn hơn */
+            border-radius: 5px;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5em;
+        }
+
+        .cart-counter {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ED6C6C;
+            border-radius: 50%;
+            padding: 0px 5px;
+            font-size: 0.8em;
+        }
+        
+    </style>
+    <style>
+        .color-circle {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .navy-circle {
+            background-color: navy;
+        }
+
+        .white-circle {
+            background-color: white;
+        }
+
+
+        .carousel-inner img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .product-info-container {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-blue {
+            background-color: #8ABDE8 ;
+            color: white;
+        }
+
+        /* Custom styles for Section 2 */
+        .product-detail-container {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+        }
+
+        .product-detail-image {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .product-detail-content {
+            margin-top: 20px;
+        }
+
+        .product-detail-content h4 {
+            color: #333;
+        }
+
+        /* Styling for the active content */
+        .product-detail-content.active {
+            display: block;
+        }
+
+        .product-info-container {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+            border-bottom: 2px dashed #ccc;
+            /* Add dashed border */
+        }
+
+        .product-detail-container {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Optional: Add some spacing between sections */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for Section 3: Featured Products */
+        .container.my-5 {
+            background-color: #f8f9fa;
+            /* Set a background color for the section */
+            padding: 30px;
+        }
+
+        h3.text-center {
+            color: #7BB4E4;
+            /* Set heading color to pink */
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Style for Featured Product Cards */
+        .card {
+            transition: transform 0.2s;
+            /* Add a smooth transition effect on hover */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            /* Increase size on hover */
+        }
+
+        .card-img-top {
+            max-height: 350px;
+            /* Set a maximum height for the product images */
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            /* Increase font size for the product title */
+            margin-bottom: 0.5em;
+        }
+
+        .card-text {
+            color: #6c757d;
+            /* Set a color for the text */
+        }
+
+        .card-link {
+            text-decoration: none;
+            /* Remove underline from links */
+            color: #000000;
+            /* Set link color */
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+            /* Underline on hover */
+        }
+
+        /* Style for Rating Stars */
+        .card-text .rating-star {
+            color: #ffc107;
+            /* Set rating star color to yellow */
+        }
+
+        .zoom {
+            overflow: hidden;
+            width: 100%;
+            /* Thêm thuộc tính width để điều chỉnh kích thước ban đầu của figure */
+        }
+
+        .zoom img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            /* Thêm thuộc tính width để điều chỉnh kích thước ban đầu của ảnh */
+        }
+
+        .zoom:hover img {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <!--Header 1-->
+    <header>
+        <h1>Blue & Blink</h1>
+        <p>Happy birdday ! Sale up to 50% of selected items</p>
+    </header>
+    
+    <nav>
+        <button class="navbar-toggler py-2 px-3" type="button" onclick="toggleMenu()">
+            <span class="fa fa-bars text-primary"></span>
+        </button>
+        <ul>
+            <li><a href="index.html">TRANG CHỦ</a></li>
+            <li><a href="DanhmucSp.html" onclick="toggleSubmenu(event)">SẢN PHẨM</a>
+                <ul>
+                    <li><a href="DanhmucSp.html">MỚI</a></li>
+                    <li><a href="DanhmucSp.html">KHUYẾN MÃI</a></li>
+                    <li><a href="DanhmucSp.html">ÁO KHOÁC</a></li>
+                    <li><a href="DanhmucSp.html">VÁY</a></li>
+                    <li><a href="DanhmucSp.html">ÁO</a></li>
+                    <li><a href="DanhmucSp.html">CHÂN VÁY</a></li>
+                    <li><a href="DanhmucSp.html">QUẦN</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">LIÊN HỆ</a></li>
+            <li><a href="#" onclick="toggleSubmenu(event)">VỀ CHÚNG TÔI</a>
+                <ul>
+                    <li><a href="Gioithieu.html">GIỚI THIỆU</a></li>
+                    <li><a href="Chinhsach.html">CHÍNH SÁCH</a></li>
+                </ul>
+            </li>
+            <li><a href="DanhmucSp.html">KHUYẾN MÃI</a></li>
+            <li><a href="MauDN.html">TÀI KHOẢN</a></li>
+            
+        </ul>
+    </nav>
+    <div class="search-cart-container">
+        <div class="search-container">
+            <a href="#" onclick="toggleSearch(event)"><i class="fa fa-search"></i></a>
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="cart-container">
+            <a href="Giohang.html"><i class="fa fa-shopping-cart cart-icon"></i></a>
+            <span class="cart-counter" id="cart-counter">0</span>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        }
+
+        function toggleSubmenu(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+            const submenu = event.target.nextElementSibling;
+            submenu.classList.toggle('show');
+        }
+
+        function toggleSearch(event) {
+            event.preventDefault();
+            const searchInput = event.target.closest('.search-container').querySelector('input');
+            searchInput.style.display = searchInput.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+  <!--End Header 1-->
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Image Slider -->
+                <div id="product-slider" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <figure class="zoom" onmousemove="zoom(event)">
+                                <img src="chitietsp\vay.png" alt="Clothes">
+                            </figure>
+                        </div>
+                        <div class="carousel-item">
+                            <figure class="zoom" onmousemove="zoom(event)">
+                                <img src="chitietsp\vay2.png" alt="Clothes">
+                            </figure>
+                        </div>
+                        <div class="carousel-item">
+                            <figure class="zoom" onmousemove="zoom(event)">
+                                <img src="chitietsp\vay1.png" alt="Clothes">
+                            </figure>
+                        </div>
+                        <div class="carousel-item">
+                            <figure class="zoom" onmousemove="zoom(event)">
+                                <img src="chitietsp\vay3.png" alt="Clothes">
+                            </figure>
+                        </div>
+                        <div class="carousel-item">
+                            <figure class="zoom" onmousemove="zoom(event)">
+                                <img src="chitietsp\vay4.png" alt="Clothes">
+                            </figure>
+                        </div>
+                        <div class="carousel-item">
+                            <figure class="zoom" onmousemove="zoom(event)">
+                                <img src="chitietsp\vay5.png" alt="Clothes">
+                            </figure>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#product-slider" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#product-slider" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 product-info-container">
+                <!-- Product Details -->
+                <h2>Cheezy Jumpsuit</h2>
+                <p class="text-muted">Màu Sắc:</p>
+                <p>
+                    <span class="color-circle navy-circle"></span>
+                    <span class="color-circle white-circle"></span>
+                </p>
+                <p>
+                    <strong>Giá:</strong>
+                    <del class="text-muted">942,000 VND</del>
+                    <span class="text-danger">520,000 VND (Giảm Giá)</span>
+                </p>
+                <div class="form-group">
+                    <label for="colorSelect">Chọn Màu:</label>
+                    <select class="form-control" id="colorSelect">
+                        <option value="navy">Navy</option>
+                        <option value="white">White</option>
+                    </select>
+                    <label for="colorSelect">Size:</label>
+                    <select class="form-control" id="colorSelect">
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                    </select>
+                    <!-- Rating Stars -->
+                    <div class="mb-3">
+                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        <!-- Add more stars based on the rating -->
+                    </div>
+                    <button class="btn btn-blue" id="add-to-cart">Thêm Vào Giỏ Hàng</button>
+                </div>
+            </div>
+        </div></div>
+    <!-- thêm vao gio hang-->
+    <script>
+            // JavaScript code
+            document.getElementById('add-to-cart').addEventListener('click', function() {
+                // Get the current cart counter value
+                let currentCount = parseInt(document.getElementById('cart-counter').innerText);
+
+                // Increment the counter
+                let newCount = currentCount + 1;
+
+                // Update the counter display
+                document.getElementById('cart-counter').innerText = newCount;
+            });
+        </script>
+    
+        <!-- Section 2: Product Details -->
+        <section class="container my-5 product-detail-container">
+            <div class="row">
+                <div class="col-md-6 order-md-2">
+                    <!-- Product Detail Image -->
+                    <img src="chitietsp\vay.png" alt="Image"
+                        class="img-fluid product-detail-image">
+                </div>
+                <div class="col-md-6">
+                    <!-- Content Description with Tabs -->
+                    <h3> Một Số Thông Tin Thêm</h3>
+                    <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="information-tab" data-toggle="tab" href="#information"
+                                role="tab" aria-controls="information" aria-selected="true">Thông Tin </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="privacy-tab" data-toggle="tab" href="#privacy" role="tab"
+                                aria-controls="privacy" aria-selected="false">Kích cỡ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                                aria-controls="contact" aria-selected="false">Chính Sách Vận Chuyển</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-3">
+                        <!-- Information Section -->
+                        <div class="tab-pane fade show active" id="information" role="tabpanel"
+                            aria-labelledby="information-tab">
+                            <h4>Thông Tin</h4>
+                            <p>
+                              🌼 CHEEZY JUMPSUIT 🌼
+                              <div>Jumpsuit được may bằng chất liệu vải thô lụa mềm mát, có độ dày vừa phải tạo độ bồng bềnh. Nền vải thêu hoa xinh xắn.</div>
+                              <div>Điểm nhấn là phần cổ ren hoa to bản được thêu tỉ mỉ.</div>
+                              <div>Jumpsuit được thiết kế bên ngoài giống váy, bên trong có quần.</div>
+                              <div>Chiều dài: 78cm.</div>
+                              <div>Sản xuất theo kích thước châu Á. Vui lòng tham khảo Hướng dẫn kích thước để chọn kích thước của bạn.</div>
+                              <div>Size L của sản phẩm này chỉ cho phép đặt hàng trước. Sẽ mất thêm 10 ngày để xử lý đơn hàng có kích thước L trong nội dung.</div>
+                              <div>Xuất xứ: Việt Nam.</div>
+                            </p>
+                        </div>
+
+                        <!-- Privacy Section -->
+                        <div class="tab-pane fade" id="privacy" role="tabpanel" aria-labelledby="privacy-tab">
+                            <h4>Kích cỡ</h4>
+                            <p>Sản xuất theo kích thước châu Á. Vui lòng tham khảo biểu đồ kích thước này cho các mặt hàng của bạn. Số đo hiển thị bằng (cm). </p>
+                            <img alt="size" src="chitietsp\size.png"/>
+
+                        </div>
+
+                        <!-- Contact Section -->
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <h4>Chính Sách Vận Chuyển</h4>
+                            <p>Chúng tôi gửi tất cả các đơn đặt hàng trong 5 ngày làm việc. Nếu đơn đặt hàng của bạn được thực hiện theo yêu cầu, vui lòng chờ đợi thời gian xử lý lâu hơn.
+                            <br>- Vận chuyển nội địa từ 5-8 ngày.
+                            <br>- Vận chuyển quốc tế là 8-21 ngày.
+                            <div>Sau khi gói hàng được gửi đi, phí vận chuyển sẽ không được hoàn lại.</div>
+                                
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 3: Featured Products -->
+        <section class="container my-5">
+            <h3 class="text-center mb-4">Sản Phẩm Liên Quan</h3>
+            <div class="row">
+                <!-- Featured Product 2 -->
+                <div class="col-md-4 mb-4">
+                    <a href="chitietsp.html" class="card-link">
+                        <div class="card">
+                            <img src="chitietsp\vay6.png" class="card-img-top" alt="Featured Product 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Miley Dress</h5>
+                                <p class="card-text">Giá: 350,000đ</p>
+                                <p class="card-text">&#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Featured Product 3 -->
+                <div class="col-md-4 mb-4">
+                    <a href="chitietsp.html" class="card-link">
+                        <div class="card">
+                            <img src="chitietsp\vay7.png" class="card-img-top" alt="Featured Product 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Reina Dress</h5>
+                                <p class="card-text">Giá: 800,000đ</p>
+                                <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734;</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Featured Product 4 -->
+                <div class="col-md-4 mb-4">
+                    <a href="chitietsp.html" class="card-link">
+                        <div class="card">
+                            <img src="chitietsp\vay8.png" class="card-img-top" alt="Featured Product 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Macy Dress</h5>
+                                <p class="card-text">Giá: 350,000đ</p>
+                                <p class="card-text">&#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+         </div>
+        </section>
+    
+
+
+        <!-- Bootstrap JS and Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- jQuery script -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script>
+            // JavaScript for zoom effect
+            function zoom(event) {
+                var zoomer = event.currentTarget;
+                var img = zoomer.querySelector('img');
+                x = event.offsetX / zoomer.offsetWidth * 100;
+                y = event.offsetY / zoomer.offsetHeight * 100;
+                img.style.transformOrigin = x + '% ' + y + '%';
+            }
+        </script>
+        </script>
+    
+        <!--footer-->
+        <footer class="footer-section">
+            <div class="container relative">
+        
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="subscription-form">
+                    <h3 class="d-flex align-items-center">
+                      <span>Hãy gửi phản hồi cho chúng tôi nếu sản phẩm của bạn có vấn đề</span></h3>
+                    <form action="#" class="row g-3">
+                      <div class="col-auto">
+                        <input type="text" class="form-control" placeholder="Enter your name">
+                      </div>
+                      <div class="col-auto">
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                      </div>
+                      <div class="col-auto">
+                        <button class="btn btn-primary">
+                          <span class="fa fa-paper-plane"></span>
+                        </button>
+                      </div>
+                    </form>
+        
+                  </div>
+                </div>
+              </div>
+        
+              <div class="row g-5 mb-5">
+                <div class="col-lg-4">
+                  <div class="mb-4 footer-logo-wrap"><a href="index.html" class="footer-logo">BLUE&BLINK</a></div>
+                  <p class="mb-4">Chúng tôi mong rằng trải nghiệm ở Blue&Blink sẽ khiến bạn hài lòng.
+                    Sự đảm bảo chất lượng sản phẩm và chính sách bảo hành tốt là những yếu tố quan trọng
+                    mà chúng tôi hướng đến. Đồng thời, chúng tôi cũng tự hào là cửa hàng cung cấp sản phẩm thời trang nữ
+                    hợp xu hướng với giá tốt trên thị trường.
+                  </p>
+        
+                  <ul class="list-unstyled custom-social">
+                    <li><a href="https://www.facebook.com/blueblink062024" target="_blank">
+                      <span class="fa fa-brands fa-facebook-f"></span></a></li>
+                    <li><a href="https://www.tiktok.com" target="_blank">
+                      <span class="fa fa-brands fa-tiktok"></span></a></li>
+                    <li><a href="https://www.instagram.com/blueblink062024?igsh=NHI3OHRicG42dWx5&utm_source=qr" target="_blank">
+                      <span class="fa fa-brands fa-instagram"></span></a></li>
+                  </ul>
+                </div>
+        
+                <div class="col-lg-8">
+                  <div class="row links-wrap">
+                    <div class="col-6 col-sm-6 col-md-3">
+                      <ul class="list-unstyled">
+                        <li>
+                            <p style="color: black;"><b>Sản phẩm</b></p>
+                        </li>
+                        <li><a href="DanhmucSp.html">Mới</a></li>
+                        <li><a href="DanhmucSp.html">Khuyến mãi</a></li>
+                        <li><a href="DanhmucSp.html">Áo khoác</a></li>
+                        <li><a href="DanhmucSp.html">Váy</a></li>
+                        <li><a href="DanhmucSp.html">Áo</a></li>
+                        <li><a href="DanhmucSp.html">Chân váy</a></li>
+                        <li><a href="DanhmucSp.html">Quần</a></li>
+                      </ul>
+                    </div>
+        
+                    <div class="col-6 col-sm-6 col-md-3">
+                      <ul class="list-unstyled">
+                        <li>
+                            <p style="color: black;"><b>Chính sách & Quy định</b></p>
+                        </li>
+                        <li><a href="Chinhsach.html">Quy định thanh toán</a></li>
+                        <li><a href="Chinhsach.html">Chính sách</a></li>
+                      </ul>
+                    </div>
+        
+                    <div class="col-6 col-sm-6 col-md-3">
+                      <ul class="list-unstyled">
+                        <li>
+                          <p style="color: black;"><b>Thông tin liên hệ</b></p>
+                        </li>
+                        <li><a href="#">Hotline: 0344165567</a></li>
+                        <li><a href="#">Email: blueblink@gmail.com</a></li>
+                        <li><a href="#">Địa chỉ: số 12 Chùa Bộc, Quang Trung, Đống Đa, Hà Nội </a></li>
+        
+                      </ul>
+                    </div>
+  
+                      <div class="col-6 col-sm-6 col-md-3">
+                        <ul class="list-unstyled">
+                          <li>
+                            <p style="color: black;"><b>Về chúng tôi</b></p>
+                          </li>
+                          <li><a href="Gioithieu.html">Giới thiệu</a></li>
+                          <li><a href="contact.html">Liên hệ</a></li>
+                        </ul>
+                        </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+</body>
+
+</html>
